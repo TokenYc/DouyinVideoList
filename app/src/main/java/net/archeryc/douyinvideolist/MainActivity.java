@@ -48,8 +48,10 @@ public class MainActivity extends AppCompatActivity implements OnViewPagerListen
                     case MotionEvent.ACTION_MOVE://手指移动（从手指按下到抬起 move多次执行）
                         break;
                     case MotionEvent.ACTION_UP://手指抬起
-                        if (recyclerView.getScrollState() == RecyclerView.SCROLL_STATE_DRAGGING && pagerLayoutManager.findSnapPosition() == 0) {
-                            if (recyclerView.getChildAt(0).getY() == 0 && recyclerView.canScrollVertically(1)) {//下滑操作
+                        if (recyclerView.getScrollState() == RecyclerView.SCROLL_STATE_DRAGGING &&
+                                pagerLayoutManager.findSnapPosition() == 0) {
+                            if (recyclerView.getChildAt(0).getY() == 0 &&
+                                    recyclerView.canScrollVertically(1)) {//下滑操作
                                 recyclerView.stopScroll();
                             }
                         }
