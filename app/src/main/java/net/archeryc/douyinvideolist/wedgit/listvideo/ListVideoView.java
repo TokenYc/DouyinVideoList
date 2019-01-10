@@ -245,7 +245,7 @@ public class ListVideoView extends FrameLayout implements TextureView.SurfaceTex
         public void onProgress(float progress, long currentTime);
     }
 
-    public void setOnSurfaceUpdateListener(OnVideoProgressListener onVideoProgressListener) {
+    public void setOnVideoProgressUpdateListener(OnVideoProgressListener onVideoProgressListener) {
         this.mOnVideoProgressListener = onVideoProgressListener;
     }
 }

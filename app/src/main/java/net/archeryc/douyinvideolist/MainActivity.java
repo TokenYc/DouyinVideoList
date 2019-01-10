@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements OnViewPagerListen
                     return false;
                 }
             });
-            viewHolder.videoView.setOnSurfaceUpdateListener(new ListVideoView.OnVideoProgressListener() {
+            viewHolder.videoView.setOnVideoProgressUpdateListener(new ListVideoView.OnVideoProgressListener() {
                 @Override
                 public void onProgress(float progress, long currentTime) {
                     Log.d("youzai", "progresss---->" + progress + "\t" + "currentTime---->" + currentTime);
