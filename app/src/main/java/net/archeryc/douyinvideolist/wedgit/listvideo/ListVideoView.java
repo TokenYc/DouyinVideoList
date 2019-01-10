@@ -5,6 +5,7 @@ import android.graphics.SurfaceTexture;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.Pair;
 import android.view.Gravity;
 import android.view.Surface;
@@ -35,6 +36,7 @@ public class ListVideoView extends FrameLayout implements TextureView.SurfaceTex
      */
     private HttpProxyCacheServer mProxyCacheServer;
     private Surface mSurface;
+    private OnVideoProgressListener mOnVideoProgressListener;
 
 
     public ListVideoView(@NonNull Context context) {
@@ -84,7 +86,15 @@ public class ListVideoView extends FrameLayout implements TextureView.SurfaceTex
 
     @Override
     public void onSurfaceTextureUpdated(SurfaceTexture surfaceTexture) {
-
+        Log.d("youzai", "onSurfaceTextureUpdated");
+        if (mOnVideoProgressListener != null) {
+            if (mMediaPlayer != null) {
+                long currentPosition = mMediaPlayer.getCurrentPosition();
+                float totalDuration = mMediaPlayer.getDuration();
+                float progress = (float) currentPosition / totalDuration;
+                mOnVideoProgressListener.onProgress(progress, currentPosition);
+            }
+        }
     }
 
     @Override
@@ -229,5 +239,13 @@ public class ListVideoView extends FrameLayout implements TextureView.SurfaceTex
             lp.height = fitSize.second;
             view.setLayoutParams(lp);
         }
+    }
+
+    public interface OnVideoProgressListener {
+        public void onProgress(float progress, long currentTime);
+    }
+
+    public void setOnSurfaceUpdateListener(OnVideoProgressListener onVideoProgressListener) {
+        this.mOnVideoProgressListener = onVideoProgressListener;
     }
 }

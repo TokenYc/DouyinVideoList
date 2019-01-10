@@ -4,12 +4,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 
 import net.archeryc.douyinvideolist.entity.VideoEntity;
+import net.archeryc.douyinvideolist.wedgit.listvideo.ListVideoView;
 import net.archeryc.douyinvideolist.wedgit.pagerlayoutmanager.OnViewPagerListener;
 import net.archeryc.douyinvideolist.wedgit.pagerlayoutmanager.ViewPagerLayoutManager;
 
@@ -101,6 +103,12 @@ public class MainActivity extends AppCompatActivity implements OnViewPagerListen
                         viewHolder.sdvCover.setVisibility(View.INVISIBLE);
                     }
                     return false;
+                }
+            });
+            viewHolder.videoView.setOnSurfaceUpdateListener(new ListVideoView.OnVideoProgressListener() {
+                @Override
+                public void onProgress(float progress, long currentTime) {
+                    Log.d("youzai", "progresss---->" + progress + "\t" + "currentTime---->" + currentTime);
                 }
             });
             viewHolder.videoView.setLooping(true);
