@@ -1,5 +1,8 @@
 package net.archeryc.douyinvideolist;
 
+import android.arch.lifecycle.Lifecycle;
+import android.arch.lifecycle.LifecycleObserver;
+import android.arch.lifecycle.OnLifecycleEvent;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -25,7 +28,7 @@ import tv.danmaku.ijk.media.player.IMediaPlayer;
  * @date on 2018/9/12  下午3:19
  * @mail 247067345@qq.com
  */
-public class VideoAdapter extends RecyclerView.Adapter {
+public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHolder> {
 
     private List<VideoEntity> dataList = new ArrayList<>();
 
@@ -40,14 +43,13 @@ public class VideoAdapter extends RecyclerView.Adapter {
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public VideoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.layout_item_video, parent, false);
         return new VideoViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-
+    public void onBindViewHolder(@NonNull VideoViewHolder holder, int position) {
         VideoEntity videoEntity = dataList.get(position);
         VideoViewHolder viewHolder = (VideoViewHolder) holder;
         viewHolder.sdvCover.setImageURI(videoEntity.getCoverUrl());
@@ -66,7 +68,6 @@ public class VideoAdapter extends RecyclerView.Adapter {
             viewHolder.sdvCover.getHierarchy().setActualImageScaleType(ScalingUtils.ScaleType.FIT_CENTER);
         }
     }
-
 
     @Override
     public int getItemCount() {

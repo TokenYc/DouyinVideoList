@@ -21,10 +21,10 @@ public class MockData {
                 "https://aweme.snssdk.com/aweme/v1/playwm/?video_id=v03033ef0000be8v3bsif32ldjudh4c0&line=0", 384, 1138));
         videoList.add(new VideoEntity("https://p1.pstatp.com/large/bd8f000561db440796dd.jpg",
                 "https://aweme.snssdk.com/aweme/v1/playwm/?video_id=v0200fa90000bee4qrqr863tt0o22t50&line=0", 384, 640));
-        videoList.add(new VideoEntity("https://p98.pstatp.com/large/b34b0007241fa60b9055.jpg",
-                "https://aweme.snssdk.com/aweme/v1/playwm/?video_id=v0200fb90000be5321r2ap9bgas2isc0&line=0", 1066, 384));
-        videoList.add(new VideoEntity("https://p98.pstatp.com/large/c0a10007f2fc822bc278.jpg",
-                "https://aweme.snssdk.com/aweme/v1/playwm/?video_id=v0200f5b0000beflk4tahtm9h94n8nqg&line=0", 360, 640));
+        videoList.add(new VideoEntity("https://p1.pstatp.com/large/tos-cn-p-0015/a6de53f…_1571919762.jpg",
+                "https://aweme.snssdk.com/aweme/v1/playwm/?s_vid=93f1b41336a8b7a442dbf1c29c6bbc5676b1fb0871e913368e93f9d55ca170a4948bd4794c23134dc8bbd12c6d8556e9a524587af82c9feff62abaec9b276785&line=0", 1066, 384));
+        videoList.add(new VideoEntity("https://p1.pstatp.com/large/tos-cn-p-0015/3d87d5b084fb41a6b8059519de76e9cb_1572838860.jpg",
+                "https://aweme.snssdk.com/aweme/v1/playwm/?s_vid=93f1b41336a8b7a442dbf1c29c6bbc56f0b557626abd3fd7599a871310d6df211dc974af61c6c577fe934e431659c2e907821064cb46c85e503527e8202af25e&line=0", 720, 1280));
         return videoList;
     }
 }

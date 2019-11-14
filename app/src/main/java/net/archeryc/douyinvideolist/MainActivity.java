@@ -123,4 +123,44 @@ public class MainActivity extends AppCompatActivity implements OnViewPagerListen
             viewHolder.sdvCover.setVisibility(View.VISIBLE);
         }
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        pauseVideo();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        restartVideo();
+    }
+
+    /**
+     * 暂停视频
+     */
+    private void pauseVideo() {
+        int snapPosition = pagerLayoutManager.findSnapPosition();
+        if (snapPosition >= 0) {
+            VideoAdapter.VideoViewHolder viewHolder =
+                    (VideoAdapter.VideoViewHolder) recyclerView.findViewHolderForLayoutPosition(snapPosition);
+            if (viewHolder != null) {
+                viewHolder.videoView.pause();
+            }
+        }
+    }
+
+    /**
+     * 暂停后重新播放视频
+     */
+    private void restartVideo() {
+        int snapPosition = pagerLayoutManager.findSnapPosition();
+        if (snapPosition >= 0) {
+            VideoAdapter.VideoViewHolder viewHolder =
+                    (VideoAdapter.VideoViewHolder) recyclerView.findViewHolderForLayoutPosition(snapPosition);
+            if (viewHolder != null) {
+                viewHolder.videoView.start();
+            }
+        }
+    }
 }
