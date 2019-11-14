@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 
@@ -27,7 +28,8 @@ public class MainActivity extends AppCompatActivity implements OnViewPagerListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        //页面保持常亮
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         Fresco.initialize(this);
 
         IjkMediaPlayer.loadLibrariesOnce(null);
@@ -134,6 +136,13 @@ public class MainActivity extends AppCompatActivity implements OnViewPagerListen
     protected void onResume() {
         super.onResume();
         restartVideo();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //页面销毁时去掉常亮flag
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 
     /**
